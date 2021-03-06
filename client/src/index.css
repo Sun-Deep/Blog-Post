@@ -1,0 +1,321 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --navbar-height: 5rem;
+  --container-width: 1080px;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.btn-primary {
+  padding: 1rem 2rem;
+  background-color: rgb(14, 13, 13);
+  color: white;
+  cursor: pointer;
+  border-radius: 0.2rem;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: rgba(14, 13, 13, 0.918);
+}
+
+/* Navbar */
+
+.icon-brand {
+  text-align: center;
+  margin-top: 10rem;
+  margin-left: 11rem;
+}
+.navbar {
+  background-color: transparent;
+  border-bottom: 1px solid black;
+}
+
+.navbar > div {
+  height: var(--navbar-height);
+  width: var(--container-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 1rem;
+}
+
+.brand a {
+  text-decoration: none;
+  color: black;
+}
+
+.login-signup > a {
+  margin-right: 1rem;
+  color: black;
+}
+
+.login-signup > * {
+  cursor: pointer;
+}
+.search {
+  position: relative;
+}
+
+.search input {
+  width: 500px;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  outline: none;
+}
+
+.search-list {
+  position: absolute;
+  top: 37px;
+  bottom: -65px;
+  color: white;
+  background-color: #403f3f;
+  width: 100%;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  min-height: 72px;
+  height: min-content;
+}
+
+.search-list a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.search-list .search-card {
+  margin: 1rem 0.5rem 0 0.5rem;
+}
+
+.search-card {
+  transition: ease-out 0.5s;
+}
+
+.search-card small {
+  color: whitesmoke;
+}
+
+.search-card hr {
+  margin-top: 0.3rem;
+  border: 1px solid gray;
+}
+
+.search-card:hover {
+  cursor: pointer;
+  padding: 0 0 0 1rem;
+  color: wheat;
+}
+
+/* Container */
+
+.container {
+  width: var(--container-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  box-sizing: border-box;
+}
+
+/* Main Content */
+
+.main-content {
+  width: 80%;
+  height: 90vh;
+  padding-left: 1rem;
+}
+
+.blog-card {
+  width: 90%;
+  padding: 2rem;
+  box-shadow: 0 0px 0px rgb(0 0 0 / 30%), 0 3px 12px rgb(0 0 0 / 22%);
+  margin: 0 0 2rem 0;
+}
+
+.blog-title {
+  font-weight: 300;
+  font-size: 3rem;
+  margin: 0 0 1rem 0;
+  line-height: 3rem;
+}
+
+.blog-author {
+  color: gray;
+}
+
+.blog-content {
+  line-height: 1.5rem;
+  margin: 1rem 0 2rem 0;
+  text-align: justify;
+}
+
+.comment {
+  padding: 0.8rem 1rem;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+/* SideBar */
+
+.sidebar {
+  width: 20%;
+  margin-left: 1rem;
+}
+
+.recent-posts {
+  padding: 1rem 1rem;
+  background-color: black;
+  color: white;
+  width: 100%;
+  border-radius: 0.2rem;
+}
+
+.blog-list-recent {
+  margin: 1rem 0;
+}
+
+/* Comment */
+
+.each-comment {
+  padding: 0.7rem;
+  background-color: #00000018;
+  margin: 1rem 0;
+  border-radius: 0.4rem;
+}
+
+.username {
+  color: gray;
+}
+
+.user-comment {
+  padding: 0.5rem 0 0 0;
+}
+.date {
+  color: gray;
+  font-size: 0.7rem;
+}
+
+/* Blog Create */
+
+.blog-create {
+  width: 90%;
+  margin-bottom: 2rem;
+}
+
+.blog-create input,
+textarea {
+  width: 100%;
+  padding: 1rem;
+  margin: 0 0 1rem 0;
+  border-radius: 0.5rem;
+}
+
+/* Login */
+
+.login,
+.signup {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  align-items: center;
+  height: 50%;
+  position: absolute;
+  width: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0px 0px rgb(0 0 0 / 30%), 0 3px 12px rgb(0 0 0 / 22%);
+}
+
+.login-fields {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.login-fields input {
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  color: gray;
+  margin-right: 1rem;
+}
+
+.login-fields button {
+  margin-top: 1rem;
+}
+
+.signup label {
+  margin-bottom: 1rem;
+}
+
+.signup input {
+  padding: 0.5rem;
+  color: gray;
+}
+
+/* Profile */
+
+.profile {
+  display: flex;
+  justify-content: center;
+}
+
+.profile img {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.blog-list {
+  margin: 3rem 0;
+}
+
+.blog-list table {
+  width: 100%;
+  text-align: left;
+}
+
+.rows td {
+  padding: 1rem 0;
+}
+
+.rows:nth-child(even) {
+  background-color: #6383a817;
+}
+
+.warning {
+  background-color: darkgoldenrod;
+  color: white;
+  padding: 0.5rem 1rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.danger {
+  background-color: darkred;
+  color: white;
+  padding: 0.5rem 1rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}

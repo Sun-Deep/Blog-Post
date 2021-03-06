@@ -1,0 +1,11 @@
+client/node_modules
+
+server/node_modules
+
+# For logs
+server/logs
+
+# folder for uploaded images
+server/upload
+
+.env
