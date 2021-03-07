@@ -18,6 +18,34 @@ const commentRegister = async (req, res, next) => {
   }
 };
 
+const replyRegister = async (req, res, next) => {
+  let { _id, _user, content } = req.body;
+  try {
+    await Comment.updateOne(
+      { _id: _id },
+      {
+        $push: {
+          replies: {
+            _user: _user,
+            content: content,
+          },
+        },
+      },
+      {
+        new: true,
+      }
+    );
+
+    const comment = await Comment.findById({ _id: _id });
+    res.status(201).json({
+      data: comment,
+    });
+  } catch (err) {
+    logger.info(err);
+    next(err);
+  }
+};
+
 /**
  * @desc Get list of comments by blog id
  */
@@ -37,4 +65,4 @@ const getComments = async (req, res, next) => {
   }
 };
 
-export { commentRegister, getComments };
+export { commentRegister, getComments, replyRegister };

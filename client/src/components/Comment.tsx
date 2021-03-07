@@ -1,6 +1,7 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RegisterComment } from "../actions/CommentActions";
+import { Link } from "react-router-dom";
+import { RegisterComment, RegisterReply } from "../actions/CommentActions";
 import { CommentType } from "../actions/CommentActionTypes";
 import { RootStore } from "../Store";
 
@@ -11,6 +12,7 @@ interface PropsType {
 
 function Comment({ comments, blogId }: PropsType) {
   const [newComment, setNewComment] = useState<string>("");
+  const [reply, setReply] = useState<string>("");
 
   let userState: any;
   try {
@@ -31,6 +33,18 @@ function Comment({ comments, blogId }: PropsType) {
     dispatch(
       RegisterComment(newComment, userState.user._id, blogId, userState.token)
     );
+  };
+
+  const handleReplyChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setReply(event.target.value);
+  };
+
+  const handleReplySubmit = (
+    comment_id: string,
+    user_id: string,
+    content: string
+  ) => {
+    dispatch(RegisterReply(comment_id, user_id, content, userState.token));
   };
 
   return (
@@ -59,11 +73,38 @@ function Comment({ comments, blogId }: PropsType) {
                 <small className="date">
                   {new Date(`${c.createdAt}`).toString()}
                 </small>
+                <br />
+
+                <div className="reply-box">
+                  <input
+                    onChange={handleReplyChange}
+                    type="text"
+                    className="reply-comment"
+                    name={`name-${c._id}`}
+                  />
+                  <button
+                    onClick={() => handleReplySubmit(c._id, c._user._id, reply)}
+                    className="reply-button"
+                  >
+                    Reply
+                  </button>
+                </div>
+
+                <div className="reply-lists">
+                  {c.replies &&
+                    c.replies.map((r) => {
+                      return (
+                        <div className="each-reply">
+                          <p key={r.createdAt}>{r.content}</p>
+                        </div>
+                      );
+                    })}
+                </div>
               </div>
             );
           })}
 
-        {comment && (
+        {/* {comment && (
           <div key={comment.createdAt} className="each-comment">
             <small className="username">{comment._user.name}</small>
             <p className="user-comment">{comment.content}</p>
@@ -71,7 +112,7 @@ function Comment({ comments, blogId }: PropsType) {
               {new Date(`${comment.createdAt}`).toString()}
             </small>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

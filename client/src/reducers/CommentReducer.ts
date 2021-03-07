@@ -1,3 +1,4 @@
+import { stat } from "node:fs";
 import {
   CommentDispatchTypes,
   CommentType,
@@ -5,6 +6,7 @@ import {
   COMMENT_LOADING,
   COMMENT_ADD,
   FETCH_COMMENTS_SUCCESS,
+  REPLY_ADD,
 } from "../actions/CommentActionTypes";
 
 interface CommentList {
@@ -23,6 +25,7 @@ const commentsReducer = (
   switch (action.type) {
     case COMMENT_FAIL:
       return {
+        ...state,
         loading: false,
       };
     case COMMENT_LOADING:
@@ -35,6 +38,16 @@ const commentsReducer = (
         ...state,
         loading: false,
         comments: [...(state.comments || []), action.payload],
+      };
+    case REPLY_ADD:
+      return {
+        ...state,
+        loading: false,
+        comments:
+          state.comments &&
+          state.comments.map((c) =>
+            c._id === action.payload._id ? action.payload : c
+          ),
       };
     case FETCH_COMMENTS_SUCCESS:
       return {

@@ -2,6 +2,7 @@ import express from "express";
 import {
   commentRegister,
   getComments,
+  replyRegister,
 } from "../controllers/comment.controller";
 import checkToken from "../middlewares/checkToken";
 
@@ -14,6 +15,14 @@ const router = express.Router();
  */
 
 router.post("/register", checkToken, commentRegister);
+
+/**
+ * @route  POST /api/comments/reply/register
+ * @desc   Register reply
+ * @access Private
+ */
+
+router.put("/reply/register", checkToken, replyRegister);
 
 /**
  * @route  POST /api/comments/:blogId

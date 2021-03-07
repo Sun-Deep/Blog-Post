@@ -175,6 +175,34 @@ code {
   margin: 1rem 0;
 }
 
+.reply {
+  color: blue;
+  cursor: pointer;
+}
+
+.reply-comment {
+  padding: 0.4rem;
+  width: 100%;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  outline: none;
+}
+
+.each-reply {
+  margin: 1rem 3rem;
+  background: #bdbdbd;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+}
+
+.user-reply {
+  color: gray;
+}
+
+.reply-button {
+  padding: 0.2rem 1rem;
+}
+
 /* SideBar */
 
 .sidebar {
