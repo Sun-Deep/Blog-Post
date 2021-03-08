@@ -32,11 +32,13 @@ export const blogsReducer = (
       return {
         ...state,
         loading: true,
+        message: undefined,
       };
     case FETCH_BLOGS_FAIL:
       return {
         ...state,
         loading: false,
+        message: undefined,
       };
     case FETCH_BLOG_SUCCESS:
       return {
@@ -48,7 +50,7 @@ export const blogsReducer = (
     case CREATE_BLOG_SUCCESS:
       return {
         ...state,
-        message: undefined,
+        message: `${action.payload.title} created successfully..`,
         loading: false,
         blogs: [...(state.blogs || []), action.payload],
       };
@@ -63,9 +65,14 @@ export const blogsReducer = (
     case UPDATE_BLOG_SUCCESS:
       return {
         ...state,
-        message: undefined,
+        message: `${action.payload.title} updated successfully..`,
         loading: false,
         blog: action.payload,
+        blogs:
+          state.blogs &&
+          state.blogs.map((b: BlogType) =>
+            b._id === action.payload._id ? action.payload : b
+          ),
       };
 
     case DELETE_BLOG_SUCCESS:
@@ -74,7 +81,10 @@ export const blogsReducer = (
         loading: false,
         blogs:
           state.blogs &&
-          state.blogs?.filter((blog) => blog._id !== action.payload._id),
+          state.blogs.filter((b) => b._id !== action.payload._id),
+        userBlogs:
+          state.userBlogs &&
+          state.userBlogs.filter((b) => b._id !== action.payload._id),
         message: `${action.payload.title} deleted successfully..`,
       };
 

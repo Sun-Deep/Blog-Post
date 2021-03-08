@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { BlogType } from "../actions/BlogActionTypes";

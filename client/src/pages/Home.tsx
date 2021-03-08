@@ -4,6 +4,7 @@ import { GetBlogs } from "../actions/BlogActions";
 import { BlogType } from "../actions/BlogActionTypes";
 import BlogCard from "../components/BlogCard";
 import BlogCreate from "../components/BlogCreate";
+import Message from "../components/Message";
 import { RootStore } from "../Store";
 
 function Home() {
@@ -16,7 +17,7 @@ function Home() {
     userState = undefined;
   }
 
-  const { blogs } = blogState;
+  const { blogs, message } = blogState;
 
   useEffect(() => {
     dispatch(GetBlogs());
@@ -24,6 +25,7 @@ function Home() {
 
   return (
     <div className="blog-content">
+      {message && <Message message={message} />}
       {userState && <BlogCreate />}
 
       {blogs &&

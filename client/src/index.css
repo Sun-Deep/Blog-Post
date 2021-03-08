@@ -347,3 +347,20 @@ textarea {
   border: none;
   cursor: pointer;
 }
+
+/* Alert */
+
+.alert {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  width: 90%;
+  border-radius: 0.2rem;
+}
+
+.alert.success {
+  background-color: lightgreen;
+}
+
+.alert.error {
+  background-color: lightcoral;
+}

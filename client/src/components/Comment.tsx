@@ -1,9 +1,7 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { ChangeEvent, useState } from "react";
+import { useDispatch } from "react-redux";
 import { RegisterComment, RegisterReply } from "../actions/CommentActions";
 import { CommentType } from "../actions/CommentActionTypes";
-import { RootStore } from "../Store";
 
 interface PropsType {
   blogId: string;
@@ -26,8 +24,6 @@ function Comment({ comments, blogId }: PropsType) {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setNewComment(event.target.value);
   };
-
-  const { comment } = useSelector((state: RootStore) => state.comments);
 
   const handleSubmit = () => {
     dispatch(
@@ -103,16 +99,6 @@ function Comment({ comments, blogId }: PropsType) {
               </div>
             );
           })}
-
-        {/* {comment && (
-          <div key={comment.createdAt} className="each-comment">
-            <small className="username">{comment._user.name}</small>
-            <p className="user-comment">{comment.content}</p>
-            <small className="date">
-              {new Date(`${comment.createdAt}`).toString()}
-            </small>
-          </div>
-        )} */}
       </div>
     </div>
   );

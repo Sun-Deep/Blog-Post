@@ -113,6 +113,7 @@ const deleteBlog = async (req, res, next) => {
     let blog = await Blog.findById({ _id });
     if (blog._user == req.profile._id) {
       const deletedBlog = await Blog.findByIdAndDelete({ _id });
+      console.log(deleteBlog);
       return res.status(201).json({
         data: deletedBlog,
       });

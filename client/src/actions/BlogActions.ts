@@ -12,7 +12,6 @@ import {
   UPDATE_BLOG_SUCCESS,
 } from "./BlogActionTypes";
 import { API_URL } from "../config";
-import { title } from "process";
 
 export const GetBlogs = () => async (dispatch: Dispatch<BlogDispatchTypes>) => {
   try {

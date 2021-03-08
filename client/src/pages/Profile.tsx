@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import { DeleteBlog, GetBlogsByUser } from "../actions/BlogActions";
+import Message from "../components/Message";
 import { RootStore } from "../Store";
 
 function Profile() {
@@ -29,7 +30,7 @@ function Profile() {
       {user && (
         <div className="profile">
           <div>
-            <img src={`${URL}/${user.image}`} alt="profile picture" />
+            <img src={`${URL}/${user.image}`} alt="Person" />
             <h2>Name: {user.name}</h2>
             <h2>Email: {user.email}</h2>
             <small>
@@ -39,7 +40,8 @@ function Profile() {
         </div>
       )}
 
-      {message && <h5>{message}</h5>}
+      {message && <Message message={message} />}
+
       <div className="blog-list">
         <table>
           <thead>

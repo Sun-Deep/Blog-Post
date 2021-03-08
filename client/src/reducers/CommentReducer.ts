@@ -1,4 +1,3 @@
-import { stat } from "node:fs";
 import {
   CommentDispatchTypes,
   CommentType,

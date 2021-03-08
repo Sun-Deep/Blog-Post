@@ -1,4 +1,3 @@
-import { act } from "react-dom/test-utils";
 import {
   FETCH_USER_SUCCESS,
   LOGIN_SUCCESS,
